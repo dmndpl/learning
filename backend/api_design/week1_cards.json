@@ -1,0 +1,771 @@
+[
+  {
+    "question": "Which statement best describes an API?",
+    "aswners": {
+      "A": "A network endpoint exposed over HTTP",
+      "B": "A contract between a provider and a consumer",
+      "C": "A database schema exposed to another program",
+      "D": "A serialization format for exchanging data"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which of the following can constitute an API?",
+    "aswners": {
+      "A": "A Python function called by another module",
+      "B": "A shared library",
+      "C": "A REST endpoint",
+      "D": "An RPC method",
+      "E": "An event published to consumers"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "Which things might legitimately be part of the contract of a function such as get_balance(account_id)?",
+    "aswners": {
+      "A": "Its argument type",
+      "B": "Its return type",
+      "C": "The meaning of the returned balance",
+      "D": "The exact database technology used internally",
+      "E": "Its possible errors",
+      "F": "Whether it has side effects"
+    },
+    "correct": ["A", "B", "C", "E", "F"]
+  },
+  {
+    "question": "What is a major purpose of an API boundary?",
+    "aswners": {
+      "A": "To ensure consumers understand the provider's database design",
+      "B": "To allow implementations to change without unnecessarily changing consumers",
+      "C": "To expose every internal capability of the provider",
+      "D": "To ensure all consumers use the same programming language"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which principle best describes what an API should expose?",
+    "aswners": {
+      "A": "Storage mechanics rather than business concepts",
+      "B": "Implementation details so consumers can optimize their calls",
+      "C": "What consumers need while hiding implementation details they do not need",
+      "D": "The underlying database schema as accurately as possible"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Why is an endpoint such as POST /database/updateCustomerRow dangerously coupled?",
+    "aswners": {
+      "A": "It exposes details of the persistence model",
+      "B": "Consumers may become dependent on table and column names",
+      "C": "Internal database changes can force consumer changes",
+      "D": "POST requests cannot modify data"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which is the stronger general API design principle?",
+    "aswners": {
+      "A": "Expose storage mechanics rather than domain semantics",
+      "B": "Expose domain semantics rather than storage mechanics",
+      "C": "Expose both equally so clients have maximum flexibility",
+      "D": "Avoid domain terminology because it may change"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What question does a persistence model primarily answer?",
+    "aswners": {
+      "A": "What information should consumers depend on?",
+      "B": "What data must the service store?",
+      "C": "Which operations should external developers perform?",
+      "D": "Which compatibility guarantees should the API make?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What question does an API model primarily answer?",
+    "aswners": {
+      "A": "What tables should exist?",
+      "B": "Which indexes should the database use?",
+      "C": "What information and operations should consumers be allowed to depend on?",
+      "D": "How should data be physically persisted?"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Why should an API model and persistence model not automatically be identical?",
+    "aswners": {
+      "A": "Some stored data should not be exposed",
+      "B": "The API may expose calculated values that do not exist directly in a table",
+      "C": "The two models serve different purposes",
+      "D": "Database values can never be serialized into API responses"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "An API always returns numeric user IDs, but its documentation never promises that IDs are numeric. What risk does this illustrate?",
+    "aswners": {
+      "A": "Consumers only depend on documented behaviour",
+      "B": "Consumers may infer contracts from consistently observable behaviour",
+      "C": "Types are irrelevant to compatibility",
+      "D": "Numeric IDs cannot be changed"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does Hyrum's Law suggest?",
+    "aswners": {
+      "A": "Only documented behaviours become dependencies",
+      "B": "With enough consumers, every observable behaviour is likely to be depended upon",
+      "C": "Public APIs should never change",
+      "D": "Internal APIs do not require explicit contracts"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "An API returns records alphabetically even though ordering is undocumented. What should an API designer infer?",
+    "aswners": {
+      "A": "Clients are guaranteed not to rely on the order",
+      "B": "Observable accidental behaviour can become an effective dependency",
+      "C": "The database should always maintain alphabetical ordering",
+      "D": "Ordering is never part of an API contract"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "If response ordering is semantically important, what should the provider do?",
+    "aswners": {
+      "A": "Leave it undocumented",
+      "B": "Explicitly define the ordering guarantee",
+      "C": "Let clients infer it from examples",
+      "D": "Depend on the database's natural ordering"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What is the central difference between producer thinking and consumer thinking?",
+    "aswners": {
+      "A": "Producers tend to think about their internal structures; consumers think about tasks they need to accomplish",
+      "B": "Consumers think about database tables; producers think about domain concepts",
+      "C": "Consumers care only about HTTP methods",
+      "D": "There is no meaningful difference"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which question is most useful when designing an API from the consumer's perspective?",
+    "aswners": {
+      "A": "Which tables can I expose?",
+      "B": "What concept is the consumer actually trying to work with?",
+      "C": "Which ORM are we using?",
+      "D": "How can every database field be represented?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why is creating a custom endpoint for every frontend screen also potentially problematic?",
+    "aswners": {
+      "A": "It can create another form of coupling",
+      "B": "HTTP only permits generic endpoints",
+      "C": "Frontend requirements never change",
+      "D": "Each domain can only expose one endpoint"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What are the various levels of an API contract discussed in the chapter?",
+    "aswners": {
+      "A": "Structural",
+      "B": "Behavioural",
+      "C": "Error",
+      "D": "Temporal",
+      "E": "Compatibility",
+      "F": "Operational",
+      "G": "Relational"
+    },
+    "correct": ["A", "B", "C", "D", "E", "F"]
+  },
+  {
+    "question": "Which questions belong primarily to the structural contract?",
+    "aswners": {
+      "A": "Which fields exist?",
+      "B": "What types do fields have?",
+      "C": "Which fields are optional or nullable?",
+      "D": "How quickly do writes become visible?",
+      "E": "What side effects does an operation cause?"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which question belongs primarily to the behavioural contract?",
+    "aswners": {
+      "A": "Is the field nullable?",
+      "B": "Does creating an order also reserve inventory?",
+      "C": "What is the P95 latency?",
+      "D": "May new response fields be added?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which concern belongs primarily to the error contract?",
+    "aswners": {
+      "A": "Whether an operation returns 409 for conflicting state",
+      "B": "Whether an ID is a string",
+      "C": "Whether a write is immediately visible",
+      "D": "Whether new enum values can be introduced"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which question belongs primarily to the temporal contract?",
+    "aswners": {
+      "A": "Which values can status contain?",
+      "B": "After PATCH succeeds, is the new value immediately visible to GET?",
+      "C": "Can the provider add a new field?",
+      "D": "What HTTP status is returned for invalid input?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which concerns belong to a compatibility contract?",
+    "aswners": {
+      "A": "Whether new fields may be added",
+      "B": "Whether new enum values may be introduced",
+      "C": "Whether deprecated fields may eventually be removed",
+      "D": "Whether identifier formats may change",
+      "E": "Which database index is used"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "Which properties belong primarily to an operational contract?",
+    "aswners": {
+      "A": "Availability",
+      "B": "Latency",
+      "C": "Rate limits",
+      "D": "Maximum response size",
+      "E": "Field naming conventions"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "Why does a schema alone fail to describe the full API contract?",
+    "aswners": {
+      "A": "It usually describes structure but not all semantics",
+      "B": "It may not describe ID stability",
+      "C": "It may not describe state transitions",
+      "D": "It may not describe consistency or timing guarantees",
+      "E": "Schemas cannot describe field types"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "Why is DELETE /users/123 insufficient by itself to describe deletion semantics?",
+    "aswners": {
+      "A": "DELETE cannot be used with users",
+      "B": "Deletion might mean hard deletion, soft deletion, deactivation, scheduled deletion, or anonymisation",
+      "C": "HTTP methods have no semantics",
+      "D": "Deletion always means removing a database row"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement about internal APIs is correct?",
+    "aswners": {
+      "A": "Internal APIs do not create coupling",
+      "B": "Internal APIs can still accumulate many consumers and become difficult to change",
+      "C": "Internal APIs should always expose implementation details",
+      "D": "Compatibility only matters for public APIs"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Compared with a public API, what advantages may an internal API have when evolving?",
+    "aswners": {
+      "A": "Coordinated migrations",
+      "B": "Faster deprecation",
+      "C": "Tighter version control",
+      "D": "Stronger assumptions about client technology",
+      "E": "No need to think about contracts"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "Which type of API generally requires the strongest compatibility discipline?",
+    "aswners": {
+      "A": "A private helper function used in one file",
+      "B": "An internal service used by one team",
+      "C": "A partner API",
+      "D": "A public API used by arbitrary external developers"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "According to the chapter, the cost of changing an API grows roughly with which factors?",
+    "aswners": {
+      "A": "Number of consumers",
+      "B": "Lack of control over consumers",
+      "C": "Strength of the dependency",
+      "D": "Number of database tables",
+      "E": "Number of HTTP methods"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "What is the goal when reasoning about coupling in API design?",
+    "aswners": {
+      "A": "Eliminate all coupling",
+      "B": "Create intentional and stable coupling",
+      "C": "Couple clients directly to implementation details",
+      "D": "Avoid exposing any domain concepts"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which is an example of good coupling?",
+    "aswners": {
+      "A": "A client depends on invoices having a payment status",
+      "B": "A client depends on payment status being stored in column 17",
+      "C": "A client assumes user IDs are PostgreSQL sequences",
+      "D": "A client assumes timestamps are generated by a particular database server"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which is an example of accidental or undesirable coupling?",
+    "aswners": {
+      "A": "A client depends on an order having a creation timestamp",
+      "B": "A client depends on stable user IDs",
+      "C": "A client assumes user IDs are monotonically increasing PostgreSQL sequences",
+      "D": "A client depends on invoices having payment status"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What does a good abstraction provide in addition to hiding complexity?",
+    "aswners": {
+      "A": "A stable conceptual model",
+      "B": "Direct access to implementation internals",
+      "C": "A copy of the persistence schema",
+      "D": "A guarantee that implementation never changes"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Why can thin database-wrapper APIs cause long-term problems?",
+    "aswners": {
+      "A": "They force consumers to understand the relational model",
+      "B": "They can freeze persistence decisions into the architecture",
+      "C": "Changing storage may become an API-breaking change",
+      "D": "They prevent databases from storing relational data"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which direction of reasoning does the chapter recommend for API design?",
+    "aswners": {
+      "A": "Database table → endpoint → domain concept → consumer need",
+      "B": "Consumer need → domain concept → API model → implementation",
+      "C": "HTTP method → database schema → consumer need",
+      "D": "Framework annotation → endpoint → use case"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What idea from domain-driven design is particularly relevant to API design?",
+    "aswners": {
+      "A": "Interfaces should reflect the language people use when discussing the problem",
+      "B": "Every database table should become a resource",
+      "C": "Every domain requires a microservice",
+      "D": "Domain terminology should remain internal"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "In a fitness application, which vocabulary is generally more appropriate for a consumer-facing API?",
+    "aswners": {
+      "A": "exercise_instances, activity_sessions, metric_values",
+      "B": "athletes, workouts, exercises, sets, reps",
+      "C": "rows, tables, primary keys, foreign keys",
+      "D": "workers, queues, shards, cache entries"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does Conway's Law suggest about software architecture?",
+    "aswners": {
+      "A": "Systems tend to mirror the communication structures of the organisations that build them",
+      "B": "Every team should own exactly one microservice",
+      "C": "Organisational boundaries should be ignored in API design",
+      "D": "Public APIs inevitably become internal APIs"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "When evaluating API boundaries, which two kinds of boundaries should be considered?",
+    "aswners": {
+      "A": "Domain boundaries",
+      "B": "Ownership boundaries",
+      "C": "Database-index boundaries",
+      "D": "Programming-language boundaries only"
+    },
+    "correct": ["A", "B"]
+  },
+  {
+    "question": "Why can an API be thought of as a product even when it is internal?",
+    "aswners": {
+      "A": "Its users are developers",
+      "B": "Developer experience affects integration cost",
+      "C": "Clearer interfaces can reduce mistakes and support work",
+      "D": "Every internal API must be sold commercially"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which outcomes can better API developer experience reduce?",
+    "aswners": {
+      "A": "Debugging time",
+      "B": "Integration mistakes",
+      "C": "Support requests",
+      "D": "Interpretation ambiguity",
+      "E": "Client-side defensive code"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "What does the principle of least surprise recommend?",
+    "aswners": {
+      "A": "Always invent new semantics rather than follow conventions",
+      "B": "Follow established conventions when they accurately express the intended semantics",
+      "C": "Never break a convention under any circumstances",
+      "D": "Make every operation behave differently so users read the documentation"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why would GET /users/123 unexpectedly updating last_viewed_at be questionable API design?",
+    "aswners": {
+      "A": "GET requests cannot return users",
+      "B": "It violates common expectations that retrieval is non-mutating",
+      "C": "Timestamps cannot be updated over HTTP",
+      "D": "GET requests cannot contain IDs"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does 'design for misuse' encourage API designers to ask?",
+    "aswners": {
+      "A": "Can a legitimate client perform the normal operation?",
+      "B": "How might a client accidentally use this interface incorrectly?",
+      "C": "How can validation be removed?",
+      "D": "How can consumers be given direct database access?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "For a transfer API, which scenarios should a robust design consider?",
+    "aswners": {
+      "A": "A negative amount",
+      "B": "Identical source and destination accounts",
+      "C": "The same request being sent twice",
+      "D": "A timeout after the transfer actually succeeded",
+      "E": "Currency being omitted"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "Why is {\"amount\": {\"currency\": \"GBP\", \"value\": \"100.00\"}} potentially safer than {\"amount\": 100}?",
+    "aswners": {
+      "A": "It carries more of the domain semantics explicitly",
+      "B": "It makes some classes of mistakes harder",
+      "C": "It completely eliminates invalid transfers",
+      "D": "It encodes information such as currency that would otherwise be ambiguous"
+    },
+    "correct": ["A", "B", "D"]
+  },
+  {
+    "question": "Which properties can increase consumer trust in an API?",
+    "aswners": {
+      "A": "Clear ownership",
+      "B": "Versioned documentation",
+      "C": "Compatibility guarantees",
+      "D": "Defined errors",
+      "E": "Deprecation policies",
+      "F": "Service-level objectives"
+    },
+    "correct": ["A", "B", "C", "D", "E", "F"]
+  },
+  {
+    "question": "Why is API quality partly institutional rather than purely technical?",
+    "aswners": {
+      "A": "Consumers need confidence that the provider will honour the contract",
+      "B": "Technical schemas alone cannot establish ownership and stability expectations",
+      "C": "APIs only work when backed by legal contracts",
+      "D": "Providers need processes for support, deprecation and compatibility"
+    },
+    "correct": ["A", "B", "D"]
+  },
+  {
+    "question": "As an API moves from a local implementation detail toward a widely used public API, what generally happens?",
+    "aswners": {
+      "A": "Breaking changes become cheaper",
+      "B": "Design discipline should increase",
+      "C": "Breaking changes generally become more expensive",
+      "D": "Contract thinking becomes less important"
+    },
+    "correct": ["B", "C"]
+  },
+  {
+    "question": "Which change is almost certainly breaking?",
+    "aswners": {
+      "A": "Adding an optional field when consumers tolerate unknown fields",
+      "B": "Renaming name to display_name",
+      "C": "Changing documentation formatting",
+      "D": "Adding an example to the documentation"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Changing an ID field from a string to a number is primarily what kind of compatibility change?",
+    "aswners": {
+      "A": "Non-breaking",
+      "B": "Breaking",
+      "C": "Operational only",
+      "D": "Purely internal"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "An API keeps a field called name with type string, but changes its meaning from legal name to preferred display name. Is this potentially breaking?",
+    "aswners": {
+      "A": "No, because its syntax is unchanged",
+      "B": "Yes, because compatibility is semantic as well as structural",
+      "C": "No, because strings have no semantics",
+      "D": "Only if the HTTP method changes"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What important limitation do schema-diff tools have?",
+    "aswners": {
+      "A": "They cannot detect any structural changes",
+      "B": "They cannot understand every semantic compatibility change",
+      "C": "They can only be used for databases",
+      "D": "They cannot compare field names"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Before defining endpoints for a subscription platform, what should you identify first?",
+    "aswners": {
+      "A": "Consumer tasks such as starting, pausing and cancelling subscriptions",
+      "B": "Database indexes",
+      "C": "The exact URL naming convention",
+      "D": "Which ORM models can automatically become routes"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Why might POST /users/123/bans be a better domain model than PATCH /users/123 with status=banned?",
+    "aswners": {
+      "A": "A ban may itself have meaningful properties such as reason, moderator and expiry",
+      "B": "PATCH is never appropriate for users",
+      "C": "REST prohibits status fields",
+      "D": "Every action must become a separate database table"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What is the deeper lesson behind the REST guideline 'URLs should contain nouns, not verbs'?",
+    "aswners": {
+      "A": "All verbs are invalid in URLs",
+      "B": "Mechanically turn every verb into a noun",
+      "C": "Understand the domain concept before choosing its interface representation",
+      "D": "Use PATCH for every state-changing operation"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What is the recommended first step in the practical API-design process?",
+    "aswners": {
+      "A": "Design URLs",
+      "B": "Choose HTTP methods",
+      "C": "Identify consumers",
+      "D": "Create database tables"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What is the recommended order of the practical API-design process?",
+    "aswners": {
+      "A": "Consumers → use cases → domain concepts → invariants → contract → test abstraction",
+      "B": "Database → ORM → URLs → consumers → documentation",
+      "C": "URLs → methods → schemas → domain concepts → consumers",
+      "D": "Implementation → contract → invariants → consumers"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which is an example of a domain invariant?",
+    "aswners": {
+      "A": "A payment amount must be positive",
+      "B": "The endpoint uses POST",
+      "C": "The response uses JSON",
+      "D": "The database uses PostgreSQL"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "When should URLs, HTTP methods, request schemas and response schemas be defined in the recommended design process?",
+    "aswners": {
+      "A": "Before understanding consumers",
+      "B": "After identifying consumers, use cases, domain concepts and invariants",
+      "C": "Before identifying domain concepts",
+      "D": "At the same time as creating database tables"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which question is suggested as a useful test of an API abstraction?",
+    "aswners": {
+      "A": "Could I completely replace the database without changing this API?",
+      "B": "Does every table have an endpoint?",
+      "C": "Does every endpoint correspond to exactly one SQL query?",
+      "D": "Can consumers determine which storage technology is being used?"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "If minor persistence changes constantly require API changes, what does that suggest?",
+    "aswners": {
+      "A": "The API is very strongly abstracted",
+      "B": "The abstraction boundary is probably too weak",
+      "C": "The database should never change",
+      "D": "Consumers need more database knowledge"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which questions are useful during an API review?",
+    "aswners": {
+      "A": "Does the vocabulary match the business domain?",
+      "B": "What unnecessary implementation knowledge does the consumer require?",
+      "C": "What behaviours are guaranteed?",
+      "D": "What assumptions are clients likely to make?",
+      "E": "Who owns the API?",
+      "F": "Is the URL perfectly RESTful according to every stylistic rule?"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "Why is POST /sql/updateStudent with programme_fk and registration_state poorly abstracted?",
+    "aswners": {
+      "A": "The consumer needs implementation-specific knowledge",
+      "B": "Numeric codes have unclear domain meaning",
+      "C": "Persistence concepts leak through the contract",
+      "D": "POST may never be used to update state"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Why might POST /students/{id}/programme-transfers be more accurate than simply changing a programme field?",
+    "aswners": {
+      "A": "A programme transfer may represent a rich domain process with approvals and checks",
+      "B": "Fields can never be modified directly",
+      "C": "Transfers must always be represented as database rows",
+      "D": "PATCH requests cannot perform validation"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "An undocumented GET /accounts response always returns IDs in increasing order. Which client assumption is most clearly accidental unless explicitly guaranteed?",
+    "aswners": {
+      "A": "Accounts have identifiers",
+      "B": "The results are sorted by ID",
+      "C": "The response contains accounts",
+      "D": "The API represents some notion of an account"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "An accounts endpoint returns IDs 10001 and 10002. Which assumptions should NOT automatically be inferred merely from those examples?",
+    "aswners": {
+      "A": "IDs will always be integers",
+      "B": "IDs increase over time",
+      "C": "Results are sorted by ID",
+      "D": "IDs are PostgreSQL sequences"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "When designing a university enrolment API, what should be identified before endpoints?",
+    "aswners": {
+      "A": "Domain entities",
+      "B": "State transitions",
+      "C": "Invariants",
+      "D": "Exact REST paths",
+      "E": "Database foreign-key names"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which is an example of a state transition relevant to a university enrolment domain?",
+    "aswners": {
+      "A": "requested → enrolled",
+      "B": "PostgreSQL → DynamoDB",
+      "C": "GET → POST",
+      "D": "JSON → Protobuf"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which could be an invariant in a university enrolment domain?",
+    "aswners": {
+      "A": "A student cannot be enrolled in the same module twice",
+      "B": "Capacity cannot normally be exceeded",
+      "C": "Prerequisites are required unless an exception exists",
+      "D": "Every module must be stored in one SQL row"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "What is the most important conceptual test of API compatibility?",
+    "aswners": {
+      "A": "Whether the JSON schema remains byte-for-byte identical",
+      "B": "Whether consumers' legitimate assumptions and semantics remain valid",
+      "C": "Whether the database schema remains unchanged",
+      "D": "Whether the same framework is still being used"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement best summarizes why API design is fundamentally about managing change?",
+    "aswners": {
+      "A": "A good API prevents its implementation from ever changing",
+      "B": "A good API allows implementation to evolve while preserving concepts consumers legitimately depend on",
+      "C": "An API should change whenever its database changes",
+      "D": "Consumers should update whenever a provider refactors"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What should API design generally begin with?",
+    "aswners": {
+      "A": "Tables",
+      "B": "HTTP methods",
+      "C": "Framework annotations",
+      "D": "Domain concepts and consumer use cases"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "Which statement best captures the chapter's closing idea?",
+    "aswners": {
+      "A": "First decide which endpoint to create, then work out its meaning",
+      "B": "First decide what promise the system should make to consumers; endpoints and schemas follow",
+      "C": "A perfectly typed API is necessarily a well-designed API",
+      "D": "Protocol choice is the most important API-design decision"
+    },
+    "correct": ["B"]
+  }
+]
