@@ -1,6 +1,6 @@
-# Fieldnotes
+# Alexandria
 
-Fieldnotes is a local React application for reading technical learning materials and testing recall with chapter-based multiple-choice quizzes.
+Alexandria is a local React application for reading technical learning materials and testing recall with chapter-based multiple-choice quizzes.
 
 The source of truth is the `backend/` directory. Markdown files become lectures, and JSON files become tests. The application discovers these files at build time, so adding learning material does not normally require changing React code.
 

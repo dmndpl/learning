@@ -42,14 +42,14 @@ function App() {
         {view.kind === 'lecture' && <LecturePage course={view.course} lecture={view.lecture} onBack={() => navigate({ kind: 'course', course: view.course })} onQuiz={() => navigate({ kind: 'quiz', course: view.course, lecture: view.lecture })} />}
         {view.kind === 'quiz' && <QuizPage lecture={view.lecture} bestScore={progress[view.lecture.id]} onBack={() => navigate({ kind: 'course', course: view.course })} onRead={() => navigate({ kind: 'lecture', course: view.course, lecture: view.lecture })} onComplete={(score) => saveScore(view.lecture.id, score)} />}
       </main>
-      <footer><span>FIELDNOTES / PERSONAL LEARNING SYSTEM</span><span>Built for deliberate practice.</span></footer>
+      <footer><span>ALEXANDRIA / PERSONAL LEARNING SYSTEM</span><span>Built for deliberate practice.</span></footer>
     </div>
   )
 }
 
 function Header({ onHome, menuOpen, setMenuOpen }: { onHome: () => void; menuOpen: boolean; setMenuOpen: (open: boolean) => void }) {
   return <header className="site-header">
-    <button className="brand" onClick={onHome} aria-label="Go home"><span className="brand-mark">F</span><span>FIELDNOTES</span></button>
+    <button className="brand" onClick={onHome} aria-label="Go home"><span className="brand-mark">A</span><span>ALEXANDRIA</span></button>
     <nav className={menuOpen ? 'open' : ''}>
       <button onClick={onHome}>Library</button>
       <span>Backend engineering</span>

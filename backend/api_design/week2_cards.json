@@ -1,0 +1,1629 @@
+[
+  {
+    "question": "Which description best captures HTTP's role in API design?",
+    "answers": {
+      "A": "A convention for serializing JSON between frontend and backend",
+      "B": "A replacement for an application's domain contract",
+      "C": "A shared protocol providing semantics, metadata, representation transfer, and transport rules",
+      "D": "A routing mechanism used only by web frameworks"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which capabilities are part of the shared semantics HTTP provides?",
+    "answers": {
+      "A": "Whether a response may be cached",
+      "B": "How a resource must be stored in a database",
+      "C": "Whether a request can safely be retried",
+      "D": "What kind of representation is being transferred",
+      "E": "Which programming language the server must use"
+    },
+    "correct": ["A", "C", "D"]
+  },
+  {
+    "question": "Why is using HTTP semantics accurately valuable?",
+    "answers": {
+      "A": "It guarantees the domain model is well designed",
+      "B": "It lets generic infrastructure correctly reason about requests and responses",
+      "C": "It eliminates the need for an application-level contract",
+      "D": "It forces every API to become RESTful"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which systems may interpret an API using HTTP semantics without understanding its domain-specific JSON?",
+    "answers": {
+      "A": "CDNs",
+      "B": "Database indexes",
+      "C": "Reverse proxies",
+      "D": "HTTP client libraries",
+      "E": "Load balancers",
+      "F": "ORM models"
+    },
+    "correct": ["A", "C", "D", "E"]
+  },
+  {
+    "question": "What is the important distinction between HTTP semantics and HTTP/1.1, HTTP/2, or HTTP/3?",
+    "answers": {
+      "A": "Each version assigns different meanings to GET and PUT",
+      "B": "HTTP semantics remain largely the same while framing and transport differ",
+      "C": "Only HTTP/1.1 has resources and representations",
+      "D": "HTTP/2 and HTTP/3 abandon status codes"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement about HTTP/2 is supported by the chapter?",
+    "answers": {
+      "A": "It replaces GET with binary-specific methods",
+      "B": "It runs only over QUIC",
+      "C": "It uses binary frames and multiplexed streams while retaining HTTP semantics",
+      "D": "It removes headers from HTTP messages"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which HTTP version described in the chapter carries HTTP semantics over QUIC?",
+    "answers": {
+      "A": "HTTP/1.0",
+      "B": "HTTP/2",
+      "C": "HTTP/1.1",
+      "D": "HTTP/3"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "In the chapter's request-response mental model, what do request and response primarily communicate?",
+    "answers": {
+      "A": "Request → intention; response → result",
+      "B": "Request → result; response → intention",
+      "C": "Request → persistence model; response → transport model"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which components may appear between an HTTP client and the application server?",
+    "answers": {
+      "A": "A CDN",
+      "B": "An API gateway",
+      "C": "A compiler",
+      "D": "A reverse proxy",
+      "E": "A load balancer"
+    },
+    "correct": ["A", "B", "D", "E"]
+  },
+  {
+    "question": "Which tasks might HTTP intermediaries perform?",
+    "answers": {
+      "A": "Route requests",
+      "B": "Change the business meaning of an invoice",
+      "C": "Enforce rate limits",
+      "D": "Cache responses",
+      "E": "Collect telemetry",
+      "F": "Choose the application's database schema"
+    },
+    "correct": ["A", "C", "D", "E"]
+  },
+  {
+    "question": "Why is GET /accounts/123/delete dangerous if requesting it actually deletes an account?",
+    "answers": {
+      "A": "DELETE must never appear in a URI",
+      "B": "Generic HTTP-aware systems are allowed to assume GET is safe",
+      "C": "GET cannot contain path parameters",
+      "D": "HTTP forbids resources called accounts"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does a URI identify in HTTP's conceptual model?",
+    "answers": {
+      "A": "A JSON document",
+      "B": "A database record",
+      "C": "A resource",
+      "D": "A TCP connection"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What is a representation?",
+    "answers": {
+      "A": "The resource's database table",
+      "B": "The bytes or content representing a resource in some form",
+      "C": "The URI itself",
+      "D": "The server process handling the request"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statements correctly distinguish resources from representations?",
+    "answers": {
+      "A": "One resource may have multiple representations",
+      "B": "The resource and the JSON returned for it are necessarily identical concepts",
+      "C": "A PDF and JSON document may represent the same report resource",
+      "D": "Representation format need not determine resource identity"
+    },
+    "correct": ["A", "C", "D"]
+  },
+  {
+    "question": "GET /reports/123 with Accept: application/pdf and Accept: application/json can conceptually refer to what?",
+    "answers": {
+      "A": "Two unrelated resources",
+      "B": "The same resource represented differently",
+      "C": "Two different HTTP methods",
+      "D": "Two different origin servers"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which URI better follows the domain-oriented design principle from the chapter?",
+    "answers": {
+      "A": "/database/customer_table/row/91827",
+      "B": "/postgres/rows/91827",
+      "C": "/customers/cus_123",
+      "D": "/storage/customer_pk/91827"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What should determine the choice of an HTTP method?",
+    "answers": {
+      "A": "The defined semantic intention of the request",
+      "B": "Whichever decorator is easiest in the framework",
+      "C": "Whether the database statement is SELECT or UPDATE",
+      "D": "A fixed CRUD mnemonic alone"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which mapping is deliberately described as useful initially but eventually misleading?",
+    "answers": {
+      "A": "GET = read, POST = create, PUT = update, DELETE = delete",
+      "B": "GET = safe retrieval",
+      "C": "HEAD = GET without response content",
+      "D": "OPTIONS = communication options"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What is the core semantic intent of GET?",
+    "answers": {
+      "A": "Create a new subordinate resource",
+      "B": "Transfer a current selected representation of the target resource",
+      "C": "Partially modify the resource",
+      "D": "Ask the server to asynchronously process arbitrary content"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which side effects are compatible with GET remaining safe?",
+    "answers": {
+      "A": "Deleting the requested account",
+      "B": "Writing an access log",
+      "C": "Incrementing an internal request metric",
+      "D": "Charging the caller £50",
+      "E": "Recording tracing information"
+    },
+    "correct": ["B", "C", "E"]
+  },
+  {
+    "question": "What does HTTP safety primarily describe?",
+    "answers": {
+      "A": "Whether the server performs literally zero writes",
+      "B": "Whether the request body is encrypted",
+      "C": "Whether the client is asking for a state-changing operation",
+      "D": "Whether the request can be cached"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which methods are identified as safe in the chapter?",
+    "answers": {
+      "A": "POST",
+      "B": "HEAD",
+      "C": "GET",
+      "D": "DELETE",
+      "E": "OPTIONS",
+      "F": "TRACE"
+    },
+    "correct": ["B", "C", "E", "F"]
+  },
+  {
+    "question": "What does HEAD mean?",
+    "answers": {
+      "A": "Retrieve only the first portion of a resource",
+      "B": "Perform the same operation as GET but do not transfer response content",
+      "C": "Retrieve only HTTP headers defined by the client",
+      "D": "Check whether a server supports GET"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which are plausible uses of HEAD?",
+    "answers": {
+      "A": "Inspecting content size",
+      "B": "Deleting a large download without transferring it",
+      "C": "Checking whether a resource exists",
+      "D": "Inspecting modification metadata",
+      "E": "Link validation"
+    },
+    "correct": ["A", "C", "D", "E"]
+  },
+  {
+    "question": "What best describes POST semantics?",
+    "answers": {
+      "A": "Always create a new resource",
+      "B": "Replace the known target resource with the supplied representation",
+      "C": "Ask the target resource to process the request content according to its semantics",
+      "D": "Retrieve the target resource without modifying it"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which operations could legitimately be modeled using POST according to the chapter?",
+    "answers": {
+      "A": "Submitting a search to /search",
+      "B": "Creating an order under /orders",
+      "C": "Retrieving /users/123 with no state change",
+      "D": "Creating a refund under /payments/pay_123/refunds",
+      "E": "Starting a job execution"
+    },
+    "correct": ["A", "B", "D", "E"]
+  },
+  {
+    "question": "Is POST idempotent by definition?",
+    "answers": {
+      "A": "Yes, always",
+      "B": "Only when returning 201",
+      "C": "No, although a particular POST operation can be designed to behave idempotently",
+      "D": "Only for JSON requests"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which statement best describes PUT?",
+    "answers": {
+      "A": "The client supplies a representation describing the desired state of a known target resource",
+      "B": "The server must generate a new resource identifier",
+      "C": "The server applies only the supplied fields and leaves all others untouched",
+      "D": "The client requests an arbitrary command to be executed"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which distinction between POST and PUT is emphasized in the chapter?",
+    "answers": {
+      "A": "POST is always asynchronous while PUT is synchronous",
+      "B": "PUT only works on files",
+      "C": "POST lets the target decide how to process content, while PUT describes desired state for a known target",
+      "D": "POST has a body while PUT cannot"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Why is PUT idempotent?",
+    "answers": {
+      "A": "Because PUT never changes state",
+      "B": "Because repeatedly establishing the same desired state should have the same intended final effect",
+      "C": "Because every PUT returns exactly the same status code",
+      "D": "Because PUT responses are always cached"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A client generates a UUID and wants to create exactly /widgets/0dd13285 at that known URI. Which method can naturally fit that semantic model?",
+    "answers": {
+      "A": "HEAD",
+      "B": "POST only",
+      "C": "PUT",
+      "D": "OPTIONS"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What problem does PATCH address?",
+    "answers": {
+      "A": "The need to partially modify a resource without replacing its complete representation",
+      "B": "The need to retrieve only response headers",
+      "C": "The need to redirect GET requests",
+      "D": "The need to create server-generated identifiers"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which statement about PATCH is correct?",
+    "answers": {
+      "A": "PATCH itself defines one universal JSON patch format",
+      "B": "Every PATCH request is idempotent",
+      "C": "PATCH is safe",
+      "D": "PATCH defines the method, while the patch-document media type determines modification semantics"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "Which PATCH operation can naturally be idempotent?",
+    "answers": {
+      "A": "increment login_count by 1",
+      "B": "append one event to a log",
+      "C": "set marketing_emails to false",
+      "D": "increase balance by £10"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which PATCH operation is clearly non-idempotent as described?",
+    "answers": {
+      "A": "Set timezone to Europe/London",
+      "B": "Increment a counter by 1",
+      "C": "Set marketing_emails to false",
+      "D": "Set language to en"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What atomicity property does the chapter associate with PATCH?",
+    "answers": {
+      "A": "Clients should be able to observe each intermediate modification",
+      "B": "The server should apply the set of changes atomically rather than expose a partially applied state",
+      "C": "PATCH may only modify one field",
+      "D": "PATCH must use a database transaction visible to the client"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does DELETE mean at the HTTP semantic level?",
+    "answers": {
+      "A": "Physically erase the corresponding database row",
+      "B": "Remove the association between the target resource and its current functionality",
+      "C": "Anonymise all stored data",
+      "D": "Guarantee that no data related to the resource survives"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which application behaviours could potentially implement DELETE semantics?",
+    "answers": {
+      "A": "Physical deletion",
+      "B": "Soft deletion",
+      "C": "Archiving",
+      "D": "Anonymisation",
+      "E": "Scheduling asynchronous removal"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "A DELETE request succeeds immediately and there is nothing useful to return. Which status is a natural choice?",
+    "answers": {
+      "A": "202 Accepted",
+      "B": "304 Not Modified",
+      "C": "204 No Content",
+      "D": "412 Precondition Failed"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Deletion has been accepted but will happen asynchronously. Which response is potentially appropriate?",
+    "answers": {
+      "A": "201 Created",
+      "B": "202 Accepted",
+      "C": "304 Not Modified",
+      "D": "415 Unsupported Media Type"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why can DELETE be idempotent even if the first request returns 204 and the second returns 404?",
+    "answers": {
+      "A": "Idempotency concerns the intended effect on state, not identical responses",
+      "B": "404 is secretly equivalent to 204",
+      "C": "Status codes do not matter in HTTP",
+      "D": "DELETE is considered safe"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What is OPTIONS used for?",
+    "answers": {
+      "A": "Replacing the state of a known resource",
+      "B": "Asking about communication options for the target resource",
+      "C": "Retrieving the response without headers",
+      "D": "Validating a cached representation"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which information might an OPTIONS response advertise?",
+    "answers": {
+      "A": "Supported HTTP methods",
+      "B": "Database indexes",
+      "C": "Supported patch formats",
+      "D": "Protocol capabilities"
+    },
+    "correct": ["A", "C", "D"]
+  },
+  {
+    "question": "Which three properties does the chapter explicitly warn students not to confuse?",
+    "answers": {
+      "A": "Authenticated",
+      "B": "Safe",
+      "C": "Cacheable",
+      "D": "Encrypted",
+      "E": "Idempotent"
+    },
+    "correct": ["B", "C", "E"]
+  },
+  {
+    "question": "What is idempotency?",
+    "answers": {
+      "A": "The request causes no server-side activity",
+      "B": "The response can be stored in a cache",
+      "C": "Performing the same request repeatedly has the same intended effect as performing it once",
+      "D": "The client is authorized to make the request"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which methods are idempotent by definition according to the chapter?",
+    "answers": {
+      "A": "PUT",
+      "B": "POST",
+      "C": "GET",
+      "D": "DELETE",
+      "E": "PATCH",
+      "F": "HEAD"
+    },
+    "correct": ["A", "C", "D", "F"]
+  },
+  {
+    "question": "Which method is unsafe but idempotent by definition?",
+    "answers": {
+      "A": "GET",
+      "B": "PUT",
+      "C": "POST",
+      "D": "PATCH"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement about cacheability is correct?",
+    "answers": {
+      "A": "Every safe request is necessarily cached",
+      "B": "Only idempotent methods can ever have cacheable responses",
+      "C": "Cacheability is a separate property from safety and idempotency",
+      "D": "Cacheability means the request cannot change state"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which method is most commonly associated with ordinary representation caching?",
+    "answers": {
+      "A": "DELETE",
+      "B": "PATCH",
+      "C": "GET",
+      "D": "PUT"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Why does idempotency become especially important when networks fail?",
+    "answers": {
+      "A": "A missing response proves the server did not receive the request",
+      "B": "A client may not know whether a request executed before the response was lost",
+      "C": "Idempotent methods never experience network failures",
+      "D": "The server can always roll back a request after a disconnect"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A payment POST succeeds on the server but its response is lost. What does the client know for certain?",
+    "answers": {
+      "A": "The payment failed",
+      "B": "The payment succeeded exactly once",
+      "C": "The server never received the request",
+      "D": "Only that it did not receive a response"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "Why can blindly retrying a non-idempotent payment POST be dangerous?",
+    "answers": {
+      "A": "The retry could cause the operation to execute twice",
+      "B": "POST requests cannot contain money values",
+      "C": "HTTP automatically changes POST to GET on retry",
+      "D": "The retry must always return 500"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What mechanism does the chapter give as an example for making retry of a non-idempotent application operation safer?",
+    "answers": {
+      "A": "Cache-Control: no-store",
+      "B": "An application-level idempotency key",
+      "C": "Accept: application/json",
+      "D": "Using 304 Not Modified"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Is Idempotency-Key described as a general core HTTP guarantee by itself?",
+    "answers": {
+      "A": "Yes",
+      "B": "Only for PUT",
+      "C": "No; its behaviour must be defined by the API's application contract",
+      "D": "Only when used with ETag"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What do the first digits of HTTP status codes broadly indicate?",
+    "answers": {
+      "A": "1xx → informational",
+      "B": "2xx → successful",
+      "C": "3xx → application error",
+      "D": "4xx → client error",
+      "E": "5xx → server error"
+    },
+    "correct": ["A", "B", "D", "E"]
+  },
+  {
+    "question": "What is the relationship between HTTP status and an application error body?",
+    "answers": {
+      "A": "The body should replace the HTTP status completely",
+      "B": "The status provides broad protocol semantics while the body can provide domain-specific detail",
+      "C": "An error body is only permitted with 500",
+      "D": "HTTP status should always be 200 if JSON explains the failure"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A request successfully creates /orders/ord_123. Which response most directly communicates this?",
+    "answers": {
+      "A": "202 Accepted with Retry-After",
+      "B": "204 No Content",
+      "C": "201 Created with Location: /orders/ord_123",
+      "D": "304 Not Modified"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What does 202 Accepted mean?",
+    "answers": {
+      "A": "Processing is complete and succeeded",
+      "B": "The request was accepted for processing, but completion is not guaranteed yet",
+      "C": "The target resource was not found",
+      "D": "The response may be reused indefinitely"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement about 202 Accepted is particularly important?",
+    "answers": {
+      "A": "It guarantees eventual success",
+      "B": "It means the operation ultimately failed",
+      "C": "It means the server accepted responsibility for attempting the work, not that the work ultimately succeeded",
+      "D": "It can only be used for DELETE"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "When is 204 No Content appropriate?",
+    "answers": {
+      "A": "When a request succeeds and there is no response content worth sending",
+      "B": "Whenever the client is unauthenticated",
+      "C": "Whenever a resource is newly created",
+      "D": "Only for GET"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What does 401 Unauthorized generally communicate despite its historical name?",
+    "answers": {
+      "A": "The resource does not exist",
+      "B": "Authentication credentials are missing or invalid",
+      "C": "The caller is authenticated but lacks permission",
+      "D": "The server crashed"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A caller is successfully authenticated but is not allowed to access an account. Which status is typically appropriate?",
+    "answers": {
+      "A": "401",
+      "B": "503",
+      "C": "403",
+      "D": "415"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which shorthand distinction between 401 and 403 is used in the chapter?",
+    "answers": {
+      "A": "401 → authentication problem; 403 → authorization/refusal problem",
+      "B": "401 → authorization problem; 403 → malformed JSON",
+      "C": "401 → missing resource; 403 → server failure"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Why might an API return 404 even when a sensitive resource exists?",
+    "answers": {
+      "A": "404 means the server is offline",
+      "B": "An API may be unwilling to disclose that the resource exists",
+      "C": "404 means the caller is authenticated",
+      "D": "HTTP prohibits 403 for sensitive resources"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does 405 Method Not Allowed communicate?",
+    "answers": {
+      "A": "The server has never heard of that HTTP method",
+      "B": "The method is recognized but is not allowed for this target resource",
+      "C": "The request body uses an unsupported media type",
+      "D": "A precondition failed"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What distinguishes 405 Method Not Allowed from 501 Not Implemented in the chapter?",
+    "answers": {
+      "A": "405 means the method is recognized but not permitted for this resource; 501 means the server does not support the method itself",
+      "B": "405 is a server error while 501 is a client error",
+      "C": "501 means the resource does not exist",
+      "D": "There is no meaningful distinction"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which scenario most naturally fits 409 Conflict?",
+    "answers": {
+      "A": "The request body is XML but JSON is required",
+      "B": "The caller tries to cancel an order that has already shipped",
+      "C": "The server's upstream dependency timed out",
+      "D": "The caller provides an old If-Match validator"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What concept is especially important when reasoning about 409 Conflict?",
+    "answers": {
+      "A": "State",
+      "B": "Representation encoding",
+      "C": "TCP framing",
+      "D": "Caching freshness"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "A request contains If-Match: \"v7\", but the current representation is \"v8\". Which status most precisely expresses the failure?",
+    "answers": {
+      "A": "415 Unsupported Media Type",
+      "B": "404 Not Found",
+      "C": "412 Precondition Failed",
+      "D": "202 Accepted"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which scenario best matches 415 Unsupported Media Type?",
+    "answers": {
+      "A": "The request is syntactically valid JSON but has an impossible date range",
+      "B": "The endpoint expects JSON but receives application/xml",
+      "C": "The caller lacks permission",
+      "D": "The current state conflicts with the operation"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which scenario is given as a common use of 422 Unprocessable Content?",
+    "answers": {
+      "A": "The request syntax and media type are understood, but its application instructions are semantically invalid",
+      "B": "The server does not support the HTTP method",
+      "C": "The gateway received an invalid upstream response",
+      "D": "The response is stale"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What does the chapter say about choosing between 400 and 422?",
+    "answers": {
+      "A": "There is one mandatory universal boundary every API must use",
+      "B": "Consistency matters more than obsessing over hyper-fine distinctions",
+      "C": "422 should replace 400 entirely",
+      "D": "400 may only be used for invalid HTTP headers"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which status represents a generic unexpected server failure?",
+    "answers": {
+      "A": "502",
+      "B": "409",
+      "C": "500",
+      "D": "304"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "A gateway receives an invalid response from an upstream server. Which status fits?",
+    "answers": {
+      "A": "502 Bad Gateway",
+      "B": "504 Gateway Timeout",
+      "C": "503 Service Unavailable",
+      "D": "422 Unprocessable Content"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "A service is temporarily unable to handle requests because of overload. Which status is appropriate?",
+    "answers": {
+      "A": "201 Created",
+      "B": "412 Precondition Failed",
+      "C": "503 Service Unavailable",
+      "D": "405 Method Not Allowed"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which header may accompany 503 to suggest when retrying could be appropriate?",
+    "answers": {
+      "A": "Accept",
+      "B": "ETag",
+      "C": "Content-Type",
+      "D": "Retry-After"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "What does 504 Gateway Timeout specifically indicate?",
+    "answers": {
+      "A": "A gateway or proxy did not receive a timely response from an upstream server",
+      "B": "An application rejected a long-running business operation",
+      "C": "The caller's credentials expired",
+      "D": "A cached representation became stale"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which hierarchy does the chapter recommend when choosing status codes?",
+    "answers": {
+      "A": "First determine the exact numeric code, then consider whether the status class is sensible",
+      "B": "Broad class → useful standard semantics → consistency → structured body → infrastructure behaviour",
+      "C": "Always use 200 and encode everything in JSON",
+      "D": "Choose whichever code is most specific even if clients cannot act on it"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why is returning 200 OK with {\"success\": false, \"error\": \"user not found\"} poor protocol design?",
+    "answers": {
+      "A": "JSON cannot contain booleans",
+      "B": "The HTTP layer communicates success while the application body communicates failure",
+      "C": "200 responses cannot contain error fields",
+      "D": "User lookup must always use POST"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which headers are associated with content and representation semantics in the chapter?",
+    "answers": {
+      "A": "Content-Type",
+      "B": "If-Match",
+      "C": "Accept",
+      "D": "Location",
+      "E": "Retry-After"
+    },
+    "correct": ["A", "C"]
+  },
+  {
+    "question": "What does Content-Type answer?",
+    "answers": {
+      "A": "What representations would I prefer to receive?",
+      "B": "What media type is the content of this message?",
+      "C": "Where was the resource created?",
+      "D": "May the representation be cached?"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does Accept communicate?",
+    "answers": {
+      "A": "The media type of the body I just sent",
+      "B": "The current representation version",
+      "C": "The representations the client can accept or prefers to receive",
+      "D": "The URI of a created resource"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "If a client requests Accept: image/png but the resource cannot be represented in any acceptable format, which response may be appropriate?",
+    "answers": {
+      "A": "406 Not Acceptable",
+      "B": "204 No Content",
+      "C": "412 Precondition Failed",
+      "D": "502 Bad Gateway"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which statement about content negotiation is central to the chapter?",
+    "answers": {
+      "A": "Representation format and resource identity are the same concept",
+      "B": "Every API should support at least three formats",
+      "C": "Resource identity and representation format are separate dimensions",
+      "D": "JSON APIs should never use Accept"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which features can involve representation negotiation according to the chapter?",
+    "answers": {
+      "A": "Localisation",
+      "B": "HTML versus JSON",
+      "C": "Compression",
+      "D": "Database sharding",
+      "E": "Image formats"
+    },
+    "correct": ["A", "B", "C", "E"]
+  },
+  {
+    "question": "What does Cache-Control: max-age=60 communicate?",
+    "answers": {
+      "A": "The response must be deleted after 60 seconds",
+      "B": "The response has a freshness lifetime of 60 seconds according to the relevant caching rules",
+      "C": "The origin must be contacted every 60 milliseconds",
+      "D": "The response can never be validated"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What is the major benefit of a fresh cached response?",
+    "answers": {
+      "A": "The cache can often reuse it without contacting the origin",
+      "B": "The resource can never change",
+      "C": "The client no longer needs HTTP",
+      "D": "The cache becomes the authoritative database"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which are potential benefits of HTTP caching mentioned in the chapter?",
+    "answers": {
+      "A": "Reduced server load",
+      "B": "Lower latency",
+      "C": "Less network traffic",
+      "D": "Elimination of all stale data",
+      "E": "Improved resilience to temporary origin slowness"
+    },
+    "correct": ["A", "B", "C", "E"]
+  },
+  {
+    "question": "When does a cached response conceptually become stale?",
+    "answers": {
+      "A": "As soon as it has been stored",
+      "B": "When its age reaches or exceeds its freshness lifetime",
+      "C": "Only when the origin server restarts",
+      "D": "Whenever the client closes its connection"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Does stale necessarily mean the cached bytes must immediately be deleted?",
+    "answers": {
+      "A": "Yes",
+      "B": "Only for JSON",
+      "C": "No; the cache may need to validate them or obtain a new response",
+      "D": "Only if an ETag exists"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "What does Cache-Control: no-store mean?",
+    "answers": {
+      "A": "The response may be stored but must be validated before use",
+      "B": "Caches should not store the response",
+      "C": "The response should be cached forever",
+      "D": "Only private caches may store it"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does Cache-Control: no-cache mean in the chapter's simplified explanation?",
+    "answers": {
+      "A": "Never store this response",
+      "B": "Reuse the stored response freely forever",
+      "C": "Do not reuse the stored response without successful validation",
+      "D": "The response has no content"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which pairing correctly distinguishes no-store and no-cache?",
+    "answers": {
+      "A": "no-store → validate before reuse; no-cache → never store",
+      "B": "no-store → don't store; no-cache → validate before reuse",
+      "C": "Both mean exactly the same thing",
+      "D": "no-cache → cache forever; no-store → cache privately"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What is an ETag?",
+    "answers": {
+      "A": "A media type",
+      "B": "A validator representing a particular version of a selected representation",
+      "C": "An authentication credential",
+      "D": "A redirect URI"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why does the chapter say entity tags are often more precise than Last-Modified timestamps?",
+    "answers": {
+      "A": "ETags are always numeric",
+      "B": "Timestamps can have limited granularity and may not map perfectly to representation identity",
+      "C": "Last-Modified is only supported by HTTP/1.1",
+      "D": "ETags automatically encrypt representations"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A client has representation ETag \"v7\" and wants the content only if something newer exists. Which header should it send?",
+    "answers": {
+      "A": "If-Match: \"v7\"",
+      "B": "Content-Type: \"v7\"",
+      "C": "If-None-Match: \"v7\"",
+      "D": "Retry-After: \"v7\""
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "GET /users/123 with If-None-Match: \"v7\" finds that \"v7\" is still current. Which response is appropriate?",
+    "answers": {
+      "A": "304 Not Modified",
+      "B": "412 Precondition Failed",
+      "C": "409 Conflict",
+      "D": "201 Created"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What does 304 Not Modified tell the client?",
+    "answers": {
+      "A": "The request failed because the resource is missing",
+      "B": "The server is sending a new replacement representation",
+      "C": "The client's existing stored representation remains usable",
+      "D": "The resource was created but has not changed"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which distinction involving 200 and 304 does the chapter make?",
+    "answers": {
+      "A": "200 → here is the representation; 304 → the representation you already have is still valid",
+      "B": "200 → cached result; 304 → server failure",
+      "C": "200 → redirect; 304 → creation",
+      "D": "Both always transfer the full representation"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Why is it inaccurate to treat every 3xx response simply as a redirect?",
+    "answers": {
+      "A": "304 has cache-validation semantics rather than ordinary redirection",
+      "B": "3xx is actually the successful status class",
+      "C": "HTTP has no redirect mechanism",
+      "D": "Only 5xx responses redirect"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What problem occurs when Alice and Bob both edit version v7, Alice saves v8, and Bob then writes his stale v7-based representation over it?",
+    "answers": {
+      "A": "Cache poisoning",
+      "B": "Content negotiation failure",
+      "C": "The lost-update problem",
+      "D": "Gateway timeout"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which combination can implement optimistic concurrency control using HTTP semantics?",
+    "answers": {
+      "A": "Accept + 406",
+      "B": "ETag + If-Match + 412",
+      "C": "Cache-Control + 503",
+      "D": "Location + HEAD"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What does If-Match allow a client to express?",
+    "answers": {
+      "A": "Send me this representation only if it has changed",
+      "B": "Apply this write only if the resource still corresponds to the version I previously observed",
+      "C": "Do not cache this response",
+      "D": "Use this response format"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Alice reads ETag \"v7\" and successfully writes with If-Match: \"v7\", producing \"v8\". Bob then writes with If-Match: \"v7\". What should happen?",
+    "answers": {
+      "A": "Bob's stale update should automatically overwrite v8",
+      "B": "The server should respond 412 Precondition Failed",
+      "C": "The server should respond 304 Not Modified",
+      "D": "The request must become a POST"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What should Bob generally do after receiving 412 because his version is stale?",
+    "answers": {
+      "A": "Blindly retry the same stale write forever",
+      "B": "Retrieve the latest state, reconcile changes, and retry deliberately",
+      "C": "Switch to DELETE",
+      "D": "Disable caching globally"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why is 412 more precise than a generic 409 for a failed If-Match check?",
+    "answers": {
+      "A": "It specifically communicates that an HTTP protocol precondition evaluated to false",
+      "B": "409 cannot contain JSON",
+      "C": "412 always means authentication failed",
+      "D": "409 is only for GET requests"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What can PUT with If-None-Match: * express?",
+    "answers": {
+      "A": "Perform this request only if the target does not currently have a representation",
+      "B": "Perform this request only if the target already exists",
+      "C": "Return the target without content",
+      "D": "Make the resource publicly cacheable"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which header commonly identifies a newly created resource after POST?",
+    "answers": {
+      "A": "Accept",
+      "B": "If-Match",
+      "C": "Location",
+      "D": "Cache-Control"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Where can Location be used according to the chapter?",
+    "answers": {
+      "A": "With creation responses",
+      "B": "With redirects",
+      "C": "As a request content media type",
+      "D": "As an entity validator"
+    },
+    "correct": ["A", "B"]
+  },
+  {
+    "question": "Which status is especially useful when a POST result should subsequently be retrieved through GET at another URI?",
+    "answers": {
+      "A": "303 See Other",
+      "B": "415 Unsupported Media Type",
+      "C": "204 No Content",
+      "D": "412 Precondition Failed"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What two layers of meaning appear in a response containing 200, Content-Type, ETag, Cache-Control, and an order JSON object?",
+    "answers": {
+      "A": "HTTP-level semantics",
+      "B": "Application-level semantics",
+      "C": "Only transport-level semantics",
+      "D": "Only database semantics"
+    },
+    "correct": ["A", "B"]
+  },
+  {
+    "question": "Which items are HTTP-level semantics rather than order-domain semantics?",
+    "answers": {
+      "A": "tracking_number",
+      "B": "ETag",
+      "C": "status = shipped",
+      "D": "Cache-Control",
+      "E": "200 OK"
+    },
+    "correct": ["B", "D", "E"]
+  },
+  {
+    "question": "Which items are application-level semantics in an order response?",
+    "answers": {
+      "A": "ETag",
+      "B": "Content-Type",
+      "C": "status = shipped",
+      "D": "tracking_number"
+    },
+    "correct": ["C", "D"]
+  },
+  {
+    "question": "Why is GET /payments/charge?account=123&amount=50 a dangerous design if it actually charges money?",
+    "answers": {
+      "A": "The application semantics conflict with GET's safe protocol semantics",
+      "B": "Query parameters cannot contain amounts",
+      "C": "GET is idempotent, so charging can never occur",
+      "D": "Payments may only use PUT"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What broader lesson follows from the unsafe GET payment example?",
+    "answers": {
+      "A": "Methods communicate only with the origin application",
+      "B": "HTTP method semantics are visible to HTTP-aware components throughout the ecosystem",
+      "C": "Generic infrastructure should inspect domain-specific JSON before handling a request",
+      "D": "GET should never be used by APIs"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Does correct HTTP usage automatically imply that an API has good domain design?",
+    "answers": {
+      "A": "Yes",
+      "B": "Only when using JSON",
+      "C": "No; protocol correctness is necessary but does not solve domain abstraction and contract design",
+      "D": "Only for public APIs"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which layers are explicitly distinguished in the chapter's API-quality model?",
+    "answers": {
+      "A": "Domain and product semantics",
+      "B": "API contract",
+      "C": "HTTP semantics",
+      "D": "HTTP transport/framing",
+      "E": "TCP/TLS or QUIC",
+      "F": "Network"
+    },
+    "correct": ["A", "B", "C", "D", "E", "F"]
+  },
+  {
+    "question": "What is lost when an API uses POST for getUser, createUser, updateUser, and deleteUser?",
+    "answers": {
+      "A": "Useful standard method semantics",
+      "B": "The ability for generic infrastructure to infer safety naturally",
+      "C": "All ability to transmit JSON",
+      "D": "Natural reasoning about idempotency",
+      "E": "Natural HTTP caching semantics for retrieval"
+    },
+    "correct": ["A", "B", "D", "E"]
+  },
+  {
+    "question": "Does the chapter say a uniform RPC-over-POST architecture is always wrong?",
+    "answers": {
+      "A": "Yes, HTTP forbids it",
+      "B": "No; it can be legitimate if it is an intentional architectural choice",
+      "C": "Yes, unless all operations are idempotent",
+      "D": "No, because HTTP methods have no semantics"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Why is treating PUT as 'large PATCH' semantically problematic?",
+    "answers": {
+      "A": "PUT normally represents desired replacement state rather than 'modify only provided properties'",
+      "B": "PUT cannot contain JSON",
+      "C": "PUT cannot modify existing resources",
+      "D": "PATCH always replaces the whole resource"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "An API receives PUT /users/123 with only {\"display_name\": \"Alice\"} and interprets omitted fields as 'leave unchanged'. What semantics is it really implementing?",
+    "answers": {
+      "A": "Retrieval semantics",
+      "B": "Partial-update semantics",
+      "C": "Deletion semantics",
+      "D": "Content-negotiation semantics"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What mistake is illustrated by concluding PATCH is idempotent simply because its method is PATCH?",
+    "answers": {
+      "A": "Confusing method semantics with the semantics of the particular patch document",
+      "B": "Confusing authentication and authorization",
+      "C": "Confusing a URI with a representation",
+      "D": "Confusing freshness with validation"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "What mistake is illustrated by saying DELETE is non-idempotent because repeated requests may return different responses?",
+    "answers": {
+      "A": "Assuming idempotency requires identical response messages",
+      "B": "Assuming DELETE changes state",
+      "C": "Assuming 404 is a valid status",
+      "D": "Assuming resources have URIs"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Before inventing a custom database_revision_number for concurrency, what should an API designer consider?",
+    "answers": {
+      "A": "Whether ETag and If-Match already express the needed precondition",
+      "B": "Whether GET can be replaced by POST",
+      "C": "Whether Content-Type can carry the revision",
+      "D": "Whether 200 should be returned for conflicts"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "When designing an HTTP operation, what should be identified first according to the chapter?",
+    "answers": {
+      "A": "Framework decorators",
+      "B": "The target resource",
+      "C": "The database table",
+      "D": "The JSON serialization library"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "What is the recommended sequence for reasoning about a new HTTP operation?",
+    "answers": {
+      "A": "Target resource → caller intention → method → successful result → failures → retries → caching → concurrency",
+      "B": "Status code → framework decorator → database operation → URI",
+      "C": "Database table → CRUD operation → method → consumer",
+      "D": "Method → URI → implementation → domain concept"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which retry questions should be considered separately?",
+    "answers": {
+      "A": "Is the method idempotent by definition?",
+      "B": "Is this particular application operation idempotent?",
+      "C": "Does the application require a deduplication mechanism?",
+      "D": "Is the resource stored in SQL?"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which questions are relevant when designing caching behaviour?",
+    "answers": {
+      "A": "How long may the representation remain fresh?",
+      "B": "Who may cache it?",
+      "C": "How will a stale copy be validated?",
+      "D": "Which ORM owns the object?",
+      "E": "Can the representation be reused?"
+    },
+    "correct": ["A", "B", "C", "E"]
+  },
+  {
+    "question": "Which mechanism should be considered when two clients could overwrite one another's work?",
+    "answers": {
+      "A": "Accept + Content-Type",
+      "B": "ETag + If-Match",
+      "C": "Location + 201",
+      "D": "Cache-Control: max-age"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "A profile GET returns ETag \"p7\" and Cache-Control: private, max-age=30. Which pieces of HTTP are being used?",
+    "answers": {
+      "A": "Representation validation",
+      "B": "Freshness policy",
+      "C": "Authentication semantics",
+      "D": "Retrieval semantics"
+    },
+    "correct": ["A", "B", "D"]
+  },
+  {
+    "question": "A profile is successfully replaced with PUT using If-Match: \"p7\" and becomes \"p8\". Which ideas are cooperating?",
+    "answers": {
+      "A": "PUT replacement semantics",
+      "B": "Write preconditions",
+      "C": "Optimistic concurrency control",
+      "D": "Content negotiation only"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "A cached profile has ETag \"p8\". The client sends GET with If-None-Match: \"p8\" and receives 304. What has happened?",
+    "answers": {
+      "A": "The cached representation has been revalidated and remains current",
+      "B": "The write precondition failed",
+      "C": "The resource was newly created",
+      "D": "The representation format was rejected"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Why might a long-running report-generation API return 202 and a Location pointing to an operation resource?",
+    "answers": {
+      "A": "Because the work has been accepted but has not completed",
+      "B": "Because 202 means the report succeeded",
+      "C": "Because the client can separately observe the operation's progress",
+      "D": "Because the operation can exist independently of the original HTTP connection"
+    },
+    "correct": ["A", "C", "D"]
+  },
+  {
+    "question": "In the asynchronous report example, why is GET appropriate for polling /operations/op_918?",
+    "answers": {
+      "A": "Polling is intended to retrieve the operation's current representation",
+      "B": "GET means 'run the operation again'",
+      "C": "GET provides safe retrieval semantics",
+      "D": "GET guarantees the operation itself will eventually succeed"
+    },
+    "correct": ["A", "C"]
+  },
+  {
+    "question": "Which design principle is illustrated by explicitly modeling a long-running operation as a resource?",
+    "answers": {
+      "A": "HTTP supplies protocol mechanisms, while the API still chooses an application model",
+      "B": "Every asynchronous job must be stored in SQL",
+      "C": "202 automatically creates an operation resource",
+      "D": "All POST requests should become GET requests"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "A new invoice is created and the server chooses its identifier. Which method most naturally fits the chapter's POST/PUT reasoning?",
+    "answers": {
+      "A": "HEAD",
+      "B": "PUT",
+      "C": "POST",
+      "D": "OPTIONS"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "The client wants to replace the complete contents of /documents/doc_123. Which method most naturally communicates that?",
+    "answers": {
+      "A": "POST",
+      "B": "PUT",
+      "C": "HEAD",
+      "D": "OPTIONS"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "The client submits a search query to /search and the target processes it to compute results. Which method is semantically natural?",
+    "answers": {
+      "A": "DELETE",
+      "B": "PUT",
+      "C": "HEAD",
+      "D": "POST"
+    },
+    "correct": ["D"]
+  },
+  {
+    "question": "Why is 'POST = create, PUT = update' insufficient?",
+    "answers": {
+      "A": "The distinction depends on request semantics and whether the target URI/state is known, not merely CRUD category",
+      "B": "Neither POST nor PUT can create resources",
+      "C": "POST and PUT are identical methods",
+      "D": "Only PATCH can update resources"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which request best demonstrates a violation of GET safety?",
+    "answers": {
+      "A": "GET /orders/123",
+      "B": "GET /orders/123/cancel where the request actually cancels the order",
+      "C": "HEAD /orders/123",
+      "D": "GET /products?limit=50"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "PATCH /counters/hits with {\"increment\": 1} demonstrates which lesson?",
+    "answers": {
+      "A": "PATCH is always idempotent",
+      "B": "Partial modifications are always safe",
+      "C": "A particular PATCH operation may be non-idempotent",
+      "D": "Counters must use POST"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "An endpoint returns Cache-Control: max-age=60 at 12:00:00. At 12:00:30, what can a compliant cache normally do?",
+    "answers": {
+      "A": "Reuse the still-fresh response without contacting the origin",
+      "B": "It must always validate using If-Match",
+      "C": "It must delete the response",
+      "D": "It must receive a new ETag"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "A response with max-age=60 was received at 12:00:00. At 12:02:00 it is stale and has ETag \"products-v14\". Which request can validate it?",
+    "answers": {
+      "A": "GET with If-Match: \"products-v14\"",
+      "B": "POST with Location: \"products-v14\"",
+      "C": "GET with If-None-Match: \"products-v14\"",
+      "D": "HEAD with Content-Type: \"products-v14\""
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "During validation, the origin still has ETag \"products-v14\". What response can it send?",
+    "answers": {
+      "A": "201 Created",
+      "B": "304 Not Modified",
+      "C": "412 Precondition Failed",
+      "D": "409 Conflict"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "During validation, the current representation has changed from \"products-v14\" to \"products-v15\". What should conceptually happen?",
+    "answers": {
+      "A": "Return a current representation, normally with 200 and the new validator",
+      "B": "Return 304 because the value changed",
+      "C": "Return 412 because GET is a write",
+      "D": "Continue serving v14 indefinitely"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which protocol feature is primarily being used when If-None-Match avoids retransmitting an unchanged representation?",
+    "answers": {
+      "A": "Authentication",
+      "B": "Conditional retrieval and cache validation",
+      "C": "Redirect preservation",
+      "D": "Application-level deduplication"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which protocol feature is primarily being used when If-Match prevents Bob from overwriting Alice's newer edit?",
+    "answers": {
+      "A": "Optimistic concurrency through conditional requests",
+      "B": "Content negotiation",
+      "C": "Freshness calculation",
+      "D": "Gateway routing"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which review questions belong to the 'Method' category in the chapter?",
+    "answers": {
+      "A": "What intention is the caller expressing?",
+      "B": "Is the operation idempotent?",
+      "C": "Who owns the database?",
+      "D": "What assumptions could generic infrastructure make?",
+      "E": "Is the operation safe?"
+    },
+    "correct": ["A", "B", "D", "E"]
+  },
+  {
+    "question": "Which review questions belong to reliability?",
+    "answers": {
+      "A": "What happens if the response is lost?",
+      "B": "Can the client retry?",
+      "C": "Could the operation execute twice?",
+      "D": "Does the API need application-level idempotency?",
+      "E": "What CSS framework does the client use?"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "Which review questions belong to concurrency?",
+    "answers": {
+      "A": "Can two clients overwrite each other's work?",
+      "B": "Can the API expose a validator?",
+      "C": "Would If-Match express the required precondition?",
+      "D": "Which media type does the client prefer?"
+    },
+    "correct": ["A", "B", "C"]
+  },
+  {
+    "question": "Which statement best summarizes why HTTP methods matter?",
+    "answers": {
+      "A": "They are merely names used to select framework functions",
+      "B": "They communicate the caller's intent to the server and to HTTP-aware infrastructure",
+      "C": "They define the application's domain model",
+      "D": "They exist mainly to make URLs shorter"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement best summarizes safe versus idempotent?",
+    "answers": {
+      "A": "Safe means repeatable; idempotent means read-only",
+      "B": "Safe means the caller does not request state change; idempotent means repeats have the same intended effect as one request",
+      "C": "They are two names for the same property",
+      "D": "Both mean the response is cacheable"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which statement best summarizes the chapter's treatment of caching?",
+    "answers": {
+      "A": "Caching is purely a CDN optimization outside HTTP",
+      "B": "Caching, freshness, and validation are part of HTTP's protocol model",
+      "C": "Only browsers may cache HTTP responses",
+      "D": "API designers do not need to reason about stale data"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which combination is correctly matched?",
+    "answers": {
+      "A": "Content-Type → format I would like to receive",
+      "B": "Accept → media type of the body I am sending",
+      "C": "If-Match → write precondition against a known validator",
+      "D": "Location → cache freshness lifetime"
+    },
+    "correct": ["C"]
+  },
+  {
+    "question": "Which combination is correctly matched?",
+    "answers": {
+      "A": "If-None-Match → conditional validation of an existing representation",
+      "B": "ETag → authentication token",
+      "C": "Cache-Control → created resource URI",
+      "D": "Accept → concurrency validator"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which combination is correctly matched?",
+    "answers": {
+      "A": "Location → resource or URI relevant to creation/redirection",
+      "B": "Retry-After → representation media type",
+      "C": "Content-Type → freshness policy",
+      "D": "ETag → requested content format"
+    },
+    "correct": ["A"]
+  },
+  {
+    "question": "Which ideas form part of the chapter's core message about HTTP?",
+    "answers": {
+      "A": "Semantics are distinct from wire framing",
+      "B": "HTTP acts on resources through representations",
+      "C": "Status codes are machine-readable protocol semantics",
+      "D": "Networks can fail ambiguously, so retry behaviour matters",
+      "E": "Correct HTTP semantics automatically guarantee excellent domain design"
+    },
+    "correct": ["A", "B", "C", "D"]
+  },
+  {
+    "question": "What is the stronger mental model of HTTP presented at the end of the chapter?",
+    "answers": {
+      "A": "Send JSON to a backend",
+      "B": "Client expresses an intention, HTTP communicates standardized semantics, the resource interprets it, and the server communicates the result",
+      "C": "Translate CRUD operations into framework decorators",
+      "D": "Expose a database through URLs"
+    },
+    "correct": ["B"]
+  },
+  {
+    "question": "Which questions does HTTP already provide mechanisms to help answer?",
+    "answers": {
+      "A": "Has this representation changed?",
+      "B": "May this response be reused?",
+      "C": "Should this write proceed only if the resource is still the version I read?",
+      "D": "Where is the resource that was just created?",
+      "E": "Was asynchronous work completed or merely accepted?",
+      "F": "Which database normalization form should the application use?"
+    },
+    "correct": ["A", "B", "C", "D", "E"]
+  },
+  {
+    "question": "What is the chapter's final design principle?",
+    "answers": {
+      "A": "Use every feature HTTP provides whether needed or not",
+      "B": "Avoid HTTP features and encode all semantics in JSON",
+      "C": "Understand HTTP well enough that using or not using its features is an informed design decision",
+      "D": "Always imitate browser APIs"
+    },
+    "correct": ["C"]
+  }
+]
